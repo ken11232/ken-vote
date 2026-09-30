@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 
 <meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+      content="width=device-width, initial-scale=1.0">
 
 <title>KEN COMMUNITY • VOTE</title>
 
@@ -16,229 +16,318 @@ content="width=device-width, initial-scale=1.0">
     padding:0;
 }
 
+:root{
+    --bg:#050509;
+    --card:#0c0c12;
+    --card2:#11111a;
+    --red:#ff1744;
+    --purple:#8b5cf6;
+    --blue:#5865f2;
+    --white:#ffffff;
+    --muted:#9696a6;
+    --border:rgba(255,255,255,.08);
+}
+
 body{
     min-height:100vh;
     font-family:Arial,Tahoma,sans-serif;
+    color:var(--white);
     background:
-        radial-gradient(circle at 50% 0%,#35113f 0%,#120916 35%,#050507 75%);
-    color:white;
+        radial-gradient(circle at 50% -10%,rgba(139,92,246,.20),transparent 35%),
+        radial-gradient(circle at 0% 50%,rgba(255,23,68,.10),transparent 30%),
+        var(--bg);
     overflow-x:hidden;
 }
 
 body::before{
     content:"";
     position:fixed;
-    width:450px;
-    height:450px;
-    border-radius:50%;
-    background:#7d163f;
-    filter:blur(150px);
-    opacity:.18;
-    top:-180px;
-    right:-100px;
+    inset:0;
     pointer-events:none;
+    background-image:
+        linear-gradient(rgba(255,255,255,.015) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.015) 1px,transparent 1px);
+    background-size:35px 35px;
+    mask-image:linear-gradient(to bottom,black,transparent);
 }
 
 .container{
-    width:min(92%,700px);
+    width:min(920px,92%);
     margin:auto;
     padding:35px 0 50px;
 }
 
+/* HEADER */
+
 .header{
     text-align:center;
-    margin-bottom:25px;
+    margin-bottom:28px;
 }
 
 .logo{
-    font-size:38px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:4px;
+    font-size:48px;
     font-weight:900;
-    letter-spacing:4px;
+    letter-spacing:7px;
+    text-shadow:0 0 30px rgba(255,255,255,.08);
 }
 
 .logo .k{
-    color:#ff2020;
+    color:#ff1744;
 }
 
 .logo .e{
-    color:white;
+    color:#fff;
 }
 
 .logo .n{
-    color:#a34cff;
+    color:#9b5cff;
+}
+
+.brand{
+    margin-top:7px;
+    color:#888896;
+    font-size:12px;
+    letter-spacing:5px;
+}
+
+/* MAIN CARD */
+
+.main-card{
+    position:relative;
+    overflow:hidden;
+    background:
+        linear-gradient(145deg,
+        rgba(255,255,255,.045),
+        rgba(255,255,255,.012));
+    border:1px solid var(--border);
+    border-radius:25px;
+    padding:32px 22px;
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.45),
+        inset 0 1px 0 rgba(255,255,255,.04);
+}
+
+.main-card::before{
+    content:"";
+    position:absolute;
+    width:250px;
+    height:250px;
+    top:-150px;
+    right:-100px;
+    background:var(--purple);
+    filter:blur(100px);
+    opacity:.16;
+}
+
+.main-card::after{
+    content:"";
+    position:absolute;
+    width:220px;
+    height:220px;
+    bottom:-150px;
+    left:-80px;
+    background:var(--red);
+    filter:blur(100px);
+    opacity:.12;
+}
+
+.content{
+    position:relative;
+    z-index:2;
 }
 
 .badge{
-    display:inline-block;
-    margin-top:10px;
+    width:max-content;
+    margin:0 auto 15px;
     padding:7px 14px;
-    border:1px solid #ffffff18;
-    border-radius:999px;
-    background:#ffffff08;
-    color:#aaa;
+    border:1px solid rgba(139,92,246,.25);
+    border-radius:50px;
+    background:rgba(139,92,246,.08);
+    color:#b99aff;
     font-size:12px;
 }
 
-.card{
-    position:relative;
-    background:
-        linear-gradient(145deg,#151018,#09090d);
-    border:1px solid #ffffff12;
-    border-radius:24px;
-    padding:28px;
-    box-shadow:
-        0 20px 70px #00000080,
-        inset 0 1px 0 #ffffff0a;
-    overflow:hidden;
-}
-
-.card::before{
-    content:"";
-    position:absolute;
-    top:0;
-    right:15%;
-    width:70%;
-    height:1px;
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            #ff2030,
-            #a84cff,
-            transparent
-        );
-}
-
-.small{
-    color:#8d8d96;
-    font-size:13px;
-    text-align:center;
-}
-
-.title{
+h1{
     text-align:center;
     font-size:32px;
-    margin:10px 0;
+    margin-bottom:10px;
 }
 
-.description{
+.subtitle{
     text-align:center;
-    color:#999;
+    color:var(--muted);
     line-height:1.8;
-    margin-bottom:25px;
+    font-size:14px;
 }
 
-.totalBox{
-    text-align:center;
-    padding:25px;
+/* LOGIN */
+
+.login-box{
+    margin:25px auto 0;
+    max-width:500px;
+    padding:18px;
+    border:1px solid var(--border);
     border-radius:18px;
-    background:#ffffff05;
-    border:1px solid #ffffff0d;
-    margin-bottom:20px;
+    background:rgba(0,0,0,.20);
+    text-align:center;
 }
 
-.total{
-    font-size:48px;
-    font-weight:900;
-    background:
-        linear-gradient(
-            90deg,
-            #ff3030,
-            #b24cff,
-            #ffffff
-        );
-    -webkit-background-clip:text;
-    color:transparent;
-}
-
-.totalLabel{
-    color:#888;
+.login-status{
+    color:#aaaab8;
     font-size:13px;
-    margin-top:5px;
+    margin-bottom:12px;
 }
 
-.progress{
-    height:8px;
-    background:#ffffff0b;
-    border-radius:99px;
-    overflow:hidden;
-    margin-top:20px;
-}
-
-.progressBar{
-    width:0%;
-    height:100%;
-    background:
-        linear-gradient(
-            90deg,
-            #ff2020,
-            #a94cff
-        );
-    transition:.5s;
-}
-
-.voteButton{
+.discord-btn{
     width:100%;
-    border:none;
-    padding:17px;
-    border-radius:15px;
-    background:
-        linear-gradient(
-            90deg,
-            #b41527,
-            #7420a4
-        );
+    border:0;
+    border-radius:13px;
+    padding:14px 18px;
+    background:var(--blue);
     color:white;
-    font-size:16px;
+    font-size:15px;
     font-weight:bold;
     cursor:pointer;
-    margin-top:20px;
-    box-shadow:0 10px 30px #8c204c35;
     transition:.2s;
 }
 
-.voteButton:hover{
+.discord-btn:hover{
     transform:translateY(-2px);
+    filter:brightness(1.08);
 }
 
-.voteButton:active{
+.discord-btn:active{
     transform:scale(.98);
 }
 
-.stats{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:10px;
-    margin-top:20px;
-}
+/* VOTE */
 
-.stat{
-    padding:15px 8px;
-    border-radius:15px;
-    background:#ffffff05;
-    border:1px solid #ffffff0b;
+.vote-area{
+    margin-top:25px;
     text-align:center;
 }
 
-.statNumber{
-    font-size:20px;
+.vote-btn{
+    width:100%;
+    max-width:500px;
+    border:1px solid rgba(255,23,68,.35);
+    border-radius:16px;
+    padding:17px 20px;
+    background:
+        linear-gradient(135deg,#ff1744,#b3002d);
+    color:#fff;
+    font-size:17px;
+    font-weight:900;
+    cursor:pointer;
+    box-shadow:
+        0 12px 35px rgba(255,23,68,.18);
+    transition:.2s;
+}
+
+.vote-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:
+        0 16px 40px rgba(255,23,68,.25);
+}
+
+.vote-btn:disabled{
+    cursor:not-allowed;
+    opacity:.55;
+    transform:none;
+    box-shadow:none;
+}
+
+.message{
+    min-height:22px;
+    margin-top:12px;
+    color:#aaaab8;
+    font-size:13px;
+}
+
+/* STATS */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
+    margin-top:30px;
+}
+
+.stat{
+    background:rgba(255,255,255,.025);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:18px 8px;
+    text-align:center;
+}
+
+.stat-number{
+    display:block;
+    font-size:24px;
+    font-weight:900;
+    margin-bottom:6px;
+}
+
+.stat-label{
+    color:#858593;
+    font-size:11px;
+}
+
+/* PROGRESS */
+
+.progress-wrap{
+    margin-top:20px;
+}
+
+.progress-top{
+    display:flex;
+    justify-content:space-between;
+    color:#858593;
+    font-size:11px;
+    margin-bottom:7px;
+}
+
+.progress{
+    height:7px;
+    overflow:hidden;
+    background:#171720;
+    border-radius:20px;
+}
+
+.progress-bar{
+    height:100%;
+    width:0%;
+    border-radius:20px;
+    background:
+        linear-gradient(90deg,var(--red),var(--purple));
+    transition:width .7s ease;
+}
+
+/* VOTERS */
+
+.voters-section{
+    margin-top:30px;
+}
+
+.section-title{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-bottom:12px;
+    font-size:15px;
     font-weight:bold;
 }
 
-.statName{
-    color:#777;
-    font-size:11px;
-    margin-top:4px;
-}
-
-.section{
-    margin-top:25px;
-}
-
-.sectionTitle{
-    margin-bottom:12px;
-    color:#ddd;
-    font-size:15px;
+.section-title::before{
+    content:"";
+    width:4px;
+    height:17px;
+    border-radius:5px;
+    background:linear-gradient(var(--red),var(--purple));
 }
 
 .voters{
@@ -251,73 +340,103 @@ body::before{
     display:flex;
     align-items:center;
     justify-content:space-between;
-    padding:13px;
-    background:#ffffff04;
-    border:1px solid #ffffff08;
+    padding:13px 14px;
+    background:rgba(255,255,255,.025);
+    border:1px solid var(--border);
     border-radius:13px;
 }
 
-.voterName{
-    font-size:14px;
+.voter-name{
+    display:flex;
+    align-items:center;
+    gap:9px;
+    min-width:0;
 }
 
-.voterDate{
-    color:#666;
-    font-size:11px;
+.avatar{
+    width:32px;
+    height:32px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+    border-radius:50%;
+    background:linear-gradient(135deg,#ff1744,#8b5cf6);
+    font-size:12px;
+    font-weight:bold;
 }
 
-.message{
-    display:none;
-    margin-top:15px;
-    padding:13px;
-    border-radius:13px;
-    text-align:center;
+.name{
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
     font-size:13px;
 }
 
-.success{
-    display:block;
-    background:#18351f;
-    color:#72e38d;
-    border:1px solid #245e34;
+.time{
+    color:#777785;
+    font-size:10px;
 }
 
-.error{
-    display:block;
-    background:#3b1717;
-    color:#ff7777;
-    border:1px solid #6d2929;
-}
-
-.login{
-    display:none;
-}
+/* FOOTER */
 
 .footer{
     text-align:center;
-    margin-top:25px;
-    color:#555;
+    color:#555562;
     font-size:11px;
+    margin-top:25px;
 }
 
-@media(max-width:500px){
+.footer b{
+    color:#777785;
+}
+
+/* LOADING */
+
+.loading{
+    text-align:center;
+    padding:20px;
+    color:#777785;
+    font-size:12px;
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
 
     .container{
         width:94%;
-        padding-top:20px;
+        padding-top:22px;
     }
 
-    .card{
-        padding:20px;
-        border-radius:20px;
-    }
-
-    .title{
-        font-size:27px;
-    }
-
-    .total{
+    .logo{
         font-size:40px;
+        letter-spacing:5px;
+    }
+
+    h1{
+        font-size:26px;
+    }
+
+    .main-card{
+        padding:25px 15px;
+        border-radius:21px;
+    }
+
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .stat{
+        padding:15px 6px;
+    }
+
+    .stat-number{
+        font-size:22px;
+    }
+
+    .voter{
+        padding:11px;
     }
 
 }
@@ -329,191 +448,289 @@ body::before{
 
 <div class="container">
 
-    <div class="header">
+    <header class="header">
 
         <div class="logo">
-            <span class="k">K</span><span class="e">E</span><span class="n">N</span>
+            <span class="k">K</span>
+            <span class="e">E</span>
+            <span class="n">N</span>
         </div>
 
-        <div class="badge">
-            KEN COMMUNITY • VOTING
-        </div>
-
-    </div>
-
-
-    <div class="card">
-
-        <div class="small">
+        <div class="brand">
             KEN COMMUNITY
         </div>
 
-        <h1 class="title">
-            صوّت لـ KEN
-        </h1>
-
-        <p class="description">
-            صوتك يساعد KEN Community يكبر.
-            سجل دخولك بحساب Discord ثم صوّت مرة واحدة.
-        </p>
+    </header>
 
 
-        <div class="totalBox">
+    <main class="main-card">
 
-            <div class="total" id="total">
-                0
+        <div class="content">
+
+            <div class="badge">
+                ✦ KEN COMMUNITY VOTE
             </div>
 
-            <div class="totalLabel">
-                إجمالي الأصوات
-            </div>
+            <h1>
+                صوّت لـ KEN
+            </h1>
 
-            <div class="progress">
+            <p class="subtitle">
+                سجّل دخولك بحساب Discord
+                وصوّت مرة واحدة فقط.
+            </p>
+
+
+            <div class="login-box">
+
                 <div
-                    class="progressBar"
-                    id="progressBar">
+                    class="login-status"
+                    id="loginStatus">
+                    جاري التحقق من تسجيل الدخول...
                 </div>
+
+                <button
+                    class="discord-btn"
+                    id="loginBtn"
+                    onclick="login()">
+
+                    تسجيل الدخول عبر Discord
+
+                </button>
+
+            </div>
+
+
+            <div class="vote-area">
+
+                <button
+                    class="vote-btn"
+                    id="voteBtn"
+                    onclick="vote()"
+                    disabled>
+
+                    🗳️ صوّت لـ KEN
+
+                </button>
+
+                <div
+                    class="message"
+                    id="message">
+                </div>
+
+            </div>
+
+
+            <div class="stats">
+
+                <div class="stat">
+                    <span
+                        class="stat-number"
+                        id="total">
+                        0
+                    </span>
+
+                    <span class="stat-label">
+                        إجمالي الأصوات
+                    </span>
+                </div>
+
+
+                <div class="stat">
+                    <span
+                        class="stat-number"
+                        id="today">
+                        0
+                    </span>
+
+                    <span class="stat-label">
+                        اليوم
+                    </span>
+                </div>
+
+
+                <div class="stat">
+                    <span
+                        class="stat-number"
+                        id="week">
+                        0
+                    </span>
+
+                    <span class="stat-label">
+                        هذا الأسبوع
+                    </span>
+                </div>
+
+
+                <div class="stat">
+                    <span
+                        class="stat-number"
+                        id="month">
+                        0
+                    </span>
+
+                    <span class="stat-label">
+                        هذا الشهر
+                    </span>
+                </div>
+
+            </div>
+
+
+            <div class="progress-wrap">
+
+                <div class="progress-top">
+
+                    <span>
+                        تقدم التصويت
+                    </span>
+
+                    <span id="progressText">
+                        0%
+                    </span>
+
+                </div>
+
+                <div class="progress">
+
+                    <div
+                        class="progress-bar"
+                        id="progressBar">
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <section class="voters-section">
+
+                <div class="section-title">
+                    آخر المصوتين
+                </div>
+
+                <div
+                    class="voters"
+                    id="voters">
+
+                    <div class="loading">
+                        جاري تحميل المصوتين...
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <div class="footer">
+                KEN COMMUNITY • نظام التصويت
             </div>
 
         </div>
 
-
-        <button
-            class="voteButton"
-            id="voteButton"
-            onclick="vote()">
-
-            ✦ صوّت الآن
-
-        </button>
-
-
-        <div
-            class="message"
-            id="message">
-        </div>
-
-
-        <div class="stats">
-
-            <div class="stat">
-                <div
-                    class="statNumber"
-                    id="today">
-                    0
-                </div>
-
-                <div class="statName">
-                    اليوم
-                </div>
-            </div>
-
-
-            <div class="stat">
-                <div
-                    class="statNumber"
-                    id="week">
-                    0
-                </div>
-
-                <div class="statName">
-                    هذا الأسبوع
-                </div>
-            </div>
-
-
-            <div class="stat">
-                <div
-                    class="statNumber"
-                    id="month">
-                    0
-                </div>
-
-                <div class="statName">
-                    هذا الشهر
-                </div>
-            </div>
-
-        </div>
-
-
-        <div class="section">
-
-            <div class="sectionTitle">
-                آخر المصوتين
-            </div>
-
-            <div
-                class="voters"
-                id="voters">
-
-                <div class="small">
-                    جاري التحميل...
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <div class="footer">
-        KEN COMMUNITY © 2026
-    </div>
+    </main>
 
 </div>
 
 
 <script>
 
-/*
-================================================
-ضع رابط Cloudflare Worker هنا
-مثال:
-
-https://ken-vote.yourname.workers.dev
-================================================
-*/
+/* ==============================
+   KEN VOTE API
+============================== */
 
 const API_URL =
 "https://ken-vote-api.1212mm101.workers.dev";
 
 
-const totalElement =
+/* ==============================
+   ELEMENTS
+============================== */
+
+const total =
 document.getElementById("total");
 
-const todayElement =
+const today =
 document.getElementById("today");
 
-const weekElement =
+const week =
 document.getElementById("week");
 
-const monthElement =
+const month =
 document.getElementById("month");
-
-const votersElement =
-document.getElementById("voters");
-
-const voteButton =
-document.getElementById("voteButton");
-
-const messageElement =
-document.getElementById("message");
 
 const progressBar =
 document.getElementById("progressBar");
 
+const progressText =
+document.getElementById("progressText");
 
-function showMessage(text,type){
+const voters =
+document.getElementById("voters");
 
-    messageElement.textContent = text;
+const voteBtn =
+document.getElementById("voteBtn");
 
-    messageElement.className =
-        "message " + type;
+const loginBtn =
+document.getElementById("loginBtn");
+
+const loginStatus =
+document.getElementById("loginStatus");
+
+const message =
+document.getElementById("message");
+
+
+/* ==============================
+   LOGIN
+============================== */
+
+function login(){
+
+    window.location.href =
+        API_URL + "/oauth/login";
 
 }
 
+
+/* ==============================
+   TIME
+============================== */
+
+function timeAgo(timestamp){
+
+    const diff =
+        Date.now() - Number(timestamp);
+
+    const minutes =
+        Math.floor(diff / 60000);
+
+    if(minutes < 1)
+        return "الآن";
+
+    if(minutes < 60)
+        return "قبل " + minutes + " دقيقة";
+
+    const hours =
+        Math.floor(minutes / 60);
+
+    if(hours < 24)
+        return "قبل " + hours + " ساعة";
+
+    const days =
+        Math.floor(hours / 24);
+
+    if(days < 30)
+        return "قبل " + days + " يوم";
+
+    return "منذ فترة";
+
+}
+
+
+/* ==============================
+   LOAD STATS
+============================== */
 
 async function loadStats(){
 
@@ -523,119 +740,174 @@ async function loadStats(){
             await fetch(
                 API_URL + "/stats",
                 {
+                    method:"GET",
                     credentials:"include"
                 }
             );
+
+
+        if(!response.ok)
+            throw new Error("API error");
+
 
         const data =
             await response.json();
 
 
-        totalElement.textContent =
+        total.textContent =
             data.total || 0;
 
-        todayElement.textContent =
+        today.textContent =
             data.today || 0;
 
-        weekElement.textContent =
+        week.textContent =
             data.week || 0;
 
-        monthElement.textContent =
+        month.textContent =
             data.month || 0;
 
 
-        let percent = 0;
-
-        if(data.total > 0){
-
-            percent =
-                Math.min(
-                    100,
-                    (data.total / 1000) * 100
-                );
-
-        }
-
-        progressBar.style.width =
-            percent + "%";
-
-
-        votersElement.innerHTML = "";
-
-
-        if(!data.recent || data.recent.length === 0){
-
-            votersElement.innerHTML =
-                '<div class="small">لا توجد أصوات بعد</div>';
-
-        }else{
-
-            data.recent.forEach(voter => {
-
-                const div =
-                    document.createElement("div");
-
-                div.className =
-                    "voter";
-
-
-                const name =
-                    document.createElement("div");
-
-                name.className =
-                    "voterName";
-
-                name.textContent =
-                    "✦ " + voter.username;
-
-
-                const date =
-                    document.createElement("div");
-
-                date.className =
-                    "voterDate";
-
-                date.textContent =
-                    new Date(
-                        voter.created_at
-                    ).toLocaleDateString("ar-IQ");
-
-
-                div.appendChild(name);
-
-                div.appendChild(date);
-
-                votersElement.appendChild(div);
-
-            });
-
-        }
-
+        /* LOGIN STATUS */
 
         if(data.loggedIn){
 
+            loginStatus.textContent =
+                "✓ تم تسجيل الدخول عبر Discord";
+
+            loginBtn.style.display =
+                "none";
+
+
             if(data.canVote){
 
-                voteButton.textContent =
-                    "✦ صوّت الآن";
+                voteBtn.disabled = false;
 
-                voteButton.disabled =
-                    false;
+                message.textContent =
+                    "يمكنك التصويت الآن";
 
             }else{
 
-                voteButton.textContent =
-                    "✓ تم التصويت";
+                voteBtn.disabled = true;
 
-                voteButton.disabled =
-                    true;
+                message.textContent =
+                    "✓ أنت مصوّت مسبقًا";
 
             }
 
         }else{
 
-            voteButton.textContent =
-                "✦ تسجيل الدخول والتصويت";
+            loginStatus.textContent =
+                "سجّل الدخول أولاً حتى تتمكن من التصويت";
+
+            loginBtn.style.display =
+                "block";
+
+            voteBtn.disabled = true;
+
+        }
+
+
+        /* PROGRESS */
+
+        const max =
+            Math.max(
+                Number(data.total || 0),
+                1
+            );
+
+        const percent =
+            Math.min(
+                (Number(data.today || 0) / max) * 100,
+                100
+            );
+
+        progressBar.style.width =
+            percent + "%";
+
+        progressText.textContent =
+            Math.round(percent) + "%";
+
+
+        /* RECENT VOTERS */
+
+        voters.innerHTML = "";
+
+
+        if(
+            !data.recent ||
+            data.recent.length === 0
+        ){
+
+            voters.innerHTML =
+                '<div class="loading">لا توجد أصوات حتى الآن</div>';
+
+        }else{
+
+            data.recent.forEach(
+                voter => {
+
+                    const row =
+                        document.createElement("div");
+
+                    row.className =
+                        "voter";
+
+
+                    const name =
+                        document.createElement("div");
+
+                    name.className =
+                        "voter-name";
+
+
+                    const avatar =
+                        document.createElement("div");
+
+                    avatar.className =
+                        "avatar";
+
+                    avatar.textContent =
+                        (voter.username || "?")
+                        .charAt(0)
+                        .toUpperCase();
+
+
+                    const username =
+                        document.createElement("span");
+
+                    username.className =
+                        "name";
+
+                    username.textContent =
+                        voter.username ||
+                        "Discord User";
+
+
+                    name.appendChild(avatar);
+
+                    name.appendChild(username);
+
+
+                    const time =
+                        document.createElement("span");
+
+                    time.className =
+                        "time";
+
+                    time.textContent =
+                        timeAgo(
+                            voter.created_at
+                        );
+
+
+                    row.appendChild(name);
+
+                    row.appendChild(time);
+
+                    voters.appendChild(row);
+
+                }
+            );
 
         }
 
@@ -644,27 +916,30 @@ async function loadStats(){
 
         console.error(error);
 
-        showMessage(
-            "تعذر الاتصال بالسيرفر",
-            "error"
-        );
+        loginStatus.textContent =
+            "تعذر الاتصال بالخادم";
+
+        voters.innerHTML =
+            '<div class="loading">تعذر تحميل البيانات</div>';
 
     }
 
 }
 
 
+/* ==============================
+   VOTE
+============================== */
+
 async function vote(){
 
+    voteBtn.disabled = true;
+
+    message.textContent =
+        "جاري تسجيل صوتك...";
+
+
     try{
-
-        voteButton.disabled =
-            true;
-
-
-        voteButton.textContent =
-            "جاري التصويت...";
-
 
         const response =
             await fetch(
@@ -690,56 +965,67 @@ async function vote(){
         }
 
 
-        if(!response.ok){
+        if(response.status === 409){
 
-            showMessage(
-                data.error || "حدث خطأ",
-                "error"
-            );
+            message.textContent =
+                "✓ أنت مصوّت مسبقًا";
 
-            voteButton.disabled =
-                false;
-
-            voteButton.textContent =
-                "✦ صوّت الآن";
+            await loadStats();
 
             return;
 
         }
 
 
-        showMessage(
-            "تم تسجيل صوتك بنجاح ✓",
-            "success"
-        );
+        if(!response.ok){
+
+            throw new Error(
+                data.error ||
+                "Vote failed"
+            );
+
+        }
 
 
-        await loadStats();
+        if(data.success){
+
+            message.textContent =
+                "✓ تم تسجيل صوتك بنجاح";
+
+            await loadStats();
+
+        }
+
 
     }catch(error){
 
-        showMessage(
-            "تعذر الاتصال بالسيرفر",
-            "error"
-        );
+        console.error(error);
 
-        voteButton.disabled =
-            false;
+        message.textContent =
+            "حدث خطأ، حاول مرة أخرى";
+
+        voteBtn.disabled = false;
 
     }
 
 }
 
 
+/* ==============================
+   START
+============================== */
+
 loadStats();
 
 
+/* تحديث الإحصائيات كل 30 ثانية */
+
 setInterval(
     loadStats,
-    15000
+    30000
 );
 
 </script>
 
 </body>
-  </html>
+</html>
